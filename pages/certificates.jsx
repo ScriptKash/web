@@ -95,8 +95,7 @@ const Certificates = ({ desktop, handleChangePage }) => {
   return (
     <>
       <HeadComponent title="Certificates" />
-      <Box className={classes.divider} style={{ backgroundColor: colors.black }} />
-      <Box mx={4} mb={4}>
+      <Box mt={5} mx={4} mb={4}>
         <Box mb={4}>
           <Box position="relative">
             <Box className={classes.title}>
@@ -200,7 +199,7 @@ const Certificates = ({ desktop, handleChangePage }) => {
                     variant="contained"
                     color="primary"
                     style={{
-                      backgroundColor: colors.blueFernando,
+                      background: 'linear-gradient(111.19deg,#aaffec -63.59%,#ff4ecd -20.3%,#0070f3 70.46%)',
                       fontWeight: 700,
                       color: colors.white,
                       outline: 'none',
@@ -215,6 +214,7 @@ const Certificates = ({ desktop, handleChangePage }) => {
           </Grid>
         </Grid>
       </Box>
+      <Box height={50} />
     </>
   );
 };

@@ -9,6 +9,8 @@ import {
   Container,
   Zoom,
   Slide,
+  Divider,
+  fade,
 } from '@material-ui/core';
 import { colors } from '../theme/colors.theme';
 
@@ -27,16 +29,9 @@ const Projects = ({ handleChangePage }) => {
   return (
     <>
       <HeadComponent title="Projects" />
-      <Box
-        bgcolor={colors.blackTrue}
-        style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,1)40%), url(./assets/images/proyectos/fondo-min.jpg)`,
-          backgroundSize: '100%',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
+      <Box>
         <Container maxWidth="md">
-          <Slide direction="down" in={true} mountOnEnter unmountOnExit>
+          <Slide direction="up" in={true} mountOnEnter unmountOnExit>
             <Box>
               <Box textAlign="center">
                 <img
@@ -47,7 +42,7 @@ const Projects = ({ handleChangePage }) => {
               </Box>
               <Card
                 style={{
-                  backgroundColor: colors.blueFernando,
+                  backgroundColor: fade(colors.blueFernando, 0.5),
                   color: colors.white,
                   padding: 10,
                   borderBottomLeftRadius: 0,
@@ -67,7 +62,8 @@ const Projects = ({ handleChangePage }) => {
                   <Button
                     onClick={() => openNewTab('https://torneos.gg/')}
                     style={{
-                      backgroundColor: colors.blue,
+                      background:
+                        'linear-gradient(111.19deg,#aaffec -63.59%,#ff4ecd -20.3%,#0070f3 70.46%)',
                       fontWeight: 800,
                       color: colors.white,
                       outline: 'none',
@@ -78,67 +74,66 @@ const Projects = ({ handleChangePage }) => {
                   </Button>
                 </Box>
               </Card>
-              <Box
-                style={{
-                  height: 170,
-                  background: 'url(/assets/images/wave.png)',
-                  backgroundSize: 'cover',
-                  backgroundColor: colors.blueFernando,
-                }}
-              />
             </Box>
           </Slide>
-          <Grid container spacing={1}>
-            {myProjects.map((project) => (
-              <Grid item xs={12} md={6}>
-                <Zoom timeout={500} in={true} disableStrictModeCompat>
-                  <Box height="100%">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      style={{
-                        width: '100%',
-                        marginBottom: 10,
-                        borderRadius: 10,
-                      }}
-                    />
-                    <Card
-                      style={{
-                        backgroundColor: 'transparent',
-                        color: colors.white,
-                        padding: 10,
-                        borderBottomLeftRadius: 0,
-                        borderBottomRightRadius: 0,
-                      }}
-                    >
-                      <CardContent>
-                        <Typography variant="h6" style={{ fontWeight: 700 }}>
-                          {project.name}
-                        </Typography>
-                        <Typography variant="body1">{project.description}</Typography>
-                      </CardContent>
-                      <Box textAlign="right" mb={2} mr={2}>
-                        {project.url && (
-                          <Button
-                            onClick={() => openNewTab(project.url)}
-                            style={{
-                              backgroundColor: colors.blue,
-                              fontWeight: 800,
-                              color: colors.white,
-                              outline: 'none',
-                              borderRadius: 5,
-                            }}
-                          >
-                            See project
-                          </Button>
-                        )}
-                      </Box>
-                    </Card>
-                  </Box>
-                </Zoom>
-              </Grid>
-            ))}
-          </Grid>
+          <Box bgcolor={fade(colors.blueFernando, 0.5)} p={3}>
+            <Box mt={1} mb={7}>
+              <Divider style={{ backgroundColor: colors.white }} />
+            </Box>
+            <Grid container spacing={1}>
+              {myProjects.map((project) => (
+                <Grid item xs={12} md={6}>
+                  <Zoom timeout={500} in={true} disableStrictModeCompat>
+                    <Box height="100%">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        style={{
+                          width: '100%',
+                          marginBottom: 10,
+                          borderRadius: 10,
+                        }}
+                      />
+                      <Card
+                        style={{
+                          backgroundColor: 'transparent',
+                          color: colors.white,
+                          padding: 10,
+                          borderBottomLeftRadius: 0,
+                          borderBottomRightRadius: 0,
+                          boxShadow: '0px 0px 0px',
+                        }}
+                      >
+                        <CardContent>
+                          <Typography variant="h6" style={{ fontWeight: 700 }}>
+                            {project.name}
+                          </Typography>
+                          <Typography variant="body1">{project.description}</Typography>
+                        </CardContent>
+                        <Box textAlign="right" mb={2} mr={2}>
+                          {project.url && (
+                            <Button
+                              onClick={() => openNewTab(project.url)}
+                              style={{
+                                background:
+                                  'linear-gradient(111.19deg,#aaffec -63.59%,#ff4ecd -20.3%,#0070f3 70.46%)',
+                                fontWeight: 800,
+                                color: colors.white,
+                                outline: 'none',
+                                borderRadius: 5,
+                              }}
+                            >
+                              See project
+                            </Button>
+                          )}
+                        </Box>
+                      </Card>
+                    </Box>
+                  </Zoom>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Container>
       </Box>
     </>

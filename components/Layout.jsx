@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
       outline: 'none',
+      color: colors.white,
     },
     title: {
       flexGrow: 1,
@@ -48,38 +49,59 @@ const useStyles = makeStyles((theme) =>
       width: 50,
     },
     menu: {
-      padding: 5,
+      height: 40,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 2,
       transition: 'all ease .20s',
       cursor: 'pointer',
       '&:hover': {
         transition: 'all ease .20s',
-        backgroundColor: fade(colors.blueFernando, 0.5),
-        borderRadius: 10,
+        color: `#ff4ecd !important`,
+        backgroundColor: fade(colors.blueFernando, 0.2),
+        borderRadius: 15,
       },
     },
     menuActive: {
-      padding: 5,
+      height: 40,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 2,
       cursor: 'pointer',
-      backgroundColor: fade(colors.blueFernando, 0.5),
-      borderRadius: 10,
-      color: colors.blueFernando,
-      border: `2px solid ${colors.blueFernando}`,
+      background:
+        'linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), linear-gradient(111.19deg, rgb(170, 255, 236) -63.59%, rgb(255, 78, 205) -20.3%, rgb(0, 112, 243) 70.46%)',
+      borderRadius: 15,
+      backgroundClip: 'content-box, border-box',
+      '&:hover': {
+        background: 'linear-gradient(111.19deg,#aaffec -63.59%,#ff4ecd -20.3%,#0070f3 70.46%)',
+      },
     },
     menuSocials: {
       padding: 5,
+      color: colors.pink,
       cursor: 'pointer',
       '&:hover': {
-        backgroundColor: '#000',
+        background: colors.blackTrue,
         borderRadius: 10,
       },
     },
     drawerPaper: {
       padding: 10,
-      backgroundColor: colors.black,
+      background: `linear-gradient(0deg,rgba(0, 3, 36, 1) 0%,rgba(0, 0, 0, 1) 50%,rgba(21, 0, 40, 1) 100%)`,
       backgroundPosition: 'top center',
     },
     anchorLeft: {
       width: 300,
+    },
+    drawerPaperDesktop: {
+      padding: 10,
+      background: `linear-gradient(0deg,rgba(0, 3, 36, 1) 0%,rgba(0, 0, 0, 1) 50%,rgba(21, 0, 40, 1) 100%)`,
+      backgroundPosition: 'top center',
+    },
+    anchorLeftDesktop: {
+      width: 65,
     },
   }),
 );
@@ -155,70 +177,65 @@ const Layout = ({
   return (
     <>
       {desktop ? (
-        <Box display="flex" width="100%">
-          <Box
-            flexDirection="column"
-            height="100vh"
-            bgcolor={colors.black}
-            textAlign="center"
-            display="flex"
-            justifyContent="space-between"
-            p={1}
-            style={{
-              borderBottomRightRadius: 10,
+        <>
+          <Drawer
+            classes={{
+              paper: classes.drawerPaperDesktop,
+              paperAnchorLeft: classes.anchorLeftDesktop,
             }}
+            anchor="left"
+            open={true}
+            variant="permanent"
           >
-            <Box mt={3} onClick={() => handleChangePage(0)}>
-              <Link href="/">
-                <img src="./assets/images/logo.png" className={classes.logo} alt="Logo" />
-              </Link>
-            </Box>
-            <Box>
-              {menuItem.map((item, index) => (
-                <Link key={item.name} href={item.url} style={{ color: colors.white }}>
-                  <Tooltip arrow placement="right" title={item.name}>
-                    <Box
-                      onClick={() => handleChangePage(index)}
-                      display="relative"
-                      mb={4}
-                      className={pageActive === index ? classes.menuActive : classes.menu}
-                    >
-                      <Box>{item.icon}</Box>
-                    </Box>
-                  </Tooltip>
+            <Box
+              flexDirection="column"
+              textAlign="center"
+              display="flex"
+              justifyContent="space-between"
+              height="100vh"
+            >
+              <Box mt={3} onClick={() => handleChangePage(0)}>
+                <Link href="/">
+                  <img src="./assets/images/logo.png" className={classes.logo} alt="Logo" />
                 </Link>
-              ))}
+              </Box>
+              <Box>
+                {menuItem.map((item, index) => (
+                  <Link key={item.name} href={item.url} style={{ color: colors.white }}>
+                    <Tooltip arrow placement="right" title={item.name}>
+                      <Box
+                        onClick={() => handleChangePage(index)}
+                        display="relative"
+                        mb={4}
+                        className={pageActive === index ? classes.menuActive : classes.menu}
+                      >
+                        <Box>{item.icon}</Box>
+                      </Box>
+                    </Tooltip>
+                  </Link>
+                ))}
+              </Box>
+              <Box>
+                {socials.map((item) => (
+                  <Box
+                    onClick={() => openNewTab(item.url)}
+                    key={item.name}
+                    display="relative"
+                    mb={2}
+                    className={classes.menuSocials}
+                  >
+                    <Tooltip arrow placement="right" title={item.name}>
+                      <Box>{item.icon}</Box>
+                    </Tooltip>
+                  </Box>
+                ))}
+              </Box>
             </Box>
-            <Box>
-              {socials.map((item) => (
-                <Box
-                  onClick={() => openNewTab(item.url)}
-                  key={item.name}
-                  display="relative"
-                  mb={2}
-                  className={classes.menuSocials}
-                >
-                  <Tooltip arrow placement="right" title={item.name}>
-                    <Box>{item.icon}</Box>
-                  </Tooltip>
-                </Box>
-              ))}
-            </Box>
+          </Drawer>
+          <Box pl="65px" height="100vh" style={{ flexGrow: 1 }} width="100%" position="relative">
+            {children}
           </Box>
-
-          {loading ? (
-            <div id="loader" className="loader-container">
-              <div className="flex">
-                <div className="loader"></div>
-              </div>
-              <div className="load-text">Loading...</div>
-            </div>
-          ) : (
-            <Box width="100%" position="relative">
-              {children}
-            </Box>
-          )}
-        </Box>
+        </>
       ) : (
         <>
           {loading ? (
@@ -231,7 +248,13 @@ const Layout = ({
           ) : (
             <>
               <div className={classes.root}>
-                <AppBar style={{ height: 60, backgroundColor: colors.black }} position="fixed">
+                <AppBar
+                  style={{
+                    height: 60,
+                    background: `linear-gradient(90deg,rgba(0, 3, 36, 1) 0%,rgba(0, 0, 0, 1) 50%,rgba(21, 0, 40, 1) 100%)`,
+                  }}
+                  position="fixed"
+                >
                   <Toolbar>
                     <IconButton
                       onClick={toggleDrawer('left', true, 'principal-menu')}
@@ -257,7 +280,7 @@ const Layout = ({
                           onClick={() => openNewTab(item.url)}
                           key={item.name}
                           mr={2}
-                          style={{ cursor: 'pointer' }}
+                          style={{ cursor: 'pointer', color: colors.white }}
                         >
                           <Box>{item.icon}</Box>
                         </Box>
@@ -297,9 +320,10 @@ const Layout = ({
                       <MenuList>
                         <MenuItem
                           onClick={() => closeDrawer(index)}
+                          style={{ justifyContent: 'flex-start' }}
                           className={pageActive === index ? classes.menuActive : classes.menu}
                         >
-                          <ListItemIcon>{item.icon}</ListItemIcon>
+                          <ListItemIcon style={{ marginLeft: 10 }}>{item.icon}</ListItemIcon>
                           <Typography style={{ fontWeight: 700 }}>{item.name}</Typography>
                         </MenuItem>
                       </MenuList>

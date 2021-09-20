@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) =>
   createStyles({
     divider: {
       height: 170,
-      background: 'url(/assets/images/wave.png)',
       backgroundSize: 'cover',
     },
     devSkills: {

@@ -1,80 +1,27 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:500,600,600i,900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,600,600i,900&display=swap');
 
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  outline: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700 !important;
   color: white;
 }
 
-h2 {
-  font-weight: 700 !important;
-}
-
-h1 {
-  font-weight: 700 !important;
-}
-
-/* LOADER */
-.loader-container {
-  z-index: 99999;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: radial-gradient(circle, rgba(0,2,167,1) 0%, rgba(0,1,56,1) 55%);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  align-content: center;
+p {
+  color: white;
 }
 
 .flex {
   min-height: 60pt;
 }
-
-@keyframes loading {
-  0% {
-    width: 50pt;
-    height: 50pt;
-    margin-top: 0;
-  }
-  25% {
-    height: 4pt;
-    margin-top: 23pt;
-  }
-  50% {
-    width: 4pt;
-  }
-  75% {
-    width: 50pt;
-  }
-  100% {
-    width: 50pt;
-    height: 50pt;
-    margin-top: 0;
-  }
-}
-
-.loader {
-  width: 50pt;
-  height: 50pt;
-  border-radius: 100%;
-  border: #fff 4pt solid;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: transparent;
-  animation: loading 1s infinite;
-}
-
-.load-text {
-  padding-top: 15px;
-  text-align: center;
-  font-weight: 900;
-  color: #fff !important;
-}
-
-/* LOADER */
 
 /* SCROLL BAR */
 
@@ -105,7 +52,12 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  background-color: black;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 3, 36, 1) 0%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(21, 0, 40, 1) 100%
+  );
   color: white;
 }
 
@@ -177,11 +129,7 @@ i.fa {
   color: white;
   padding: 30px;
   background: rgba(1, 68, 179, 1);
-  background-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 48%,
-    #01389f 30%
-  );
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 48%, #01389f 30%);
   background-position: top;
 }
 
@@ -265,7 +213,7 @@ i.fa {
 
 .about-bold {
   font-weight: 800;
-  color: #0178FF;
+  color: #0178ff;
 }
 
 /* ========================= EXPERIENCE ========================= */
@@ -297,11 +245,11 @@ ul.timeline {
 
 .timelime-company {
   font-weight: 900;
-  color: #0178FF;
+  color: #0178ff;
 }
 
 ul.timeline:before {
-  content: " ";
+  content: ' ';
   background: #d4d9df;
   display: inline-block;
   position: absolute;
@@ -317,12 +265,12 @@ ul.timeline > li {
 }
 
 ul.timeline > li:before {
-  content: " ";
+  content: ' ';
   background: white;
   display: inline-block;
   position: absolute;
   border-radius: 50%;
-  border: 3px solid #0178FF;
+  border: 3px solid #0178ff;
   left: 20px;
   width: 20px;
   height: 20px;
@@ -441,7 +389,7 @@ ul.timeline > li:before {
 }
 
 .certificate-section-title:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 0;
@@ -464,7 +412,7 @@ ul.timeline > li:before {
 }
 
 .certificate-section-title-about:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 0;
@@ -489,7 +437,7 @@ ul.timeline > li:before {
   align-items: center;
   border-radius: 20px;
   color: black;
-  border: 3px solid #0178FF;
+  border: 3px solid #0178ff;
   font-weight: 600;
   color: #fff;
 }
@@ -639,19 +587,19 @@ canvas {
 
 /* ========================= MATERIAL UI ========================= */
 .MuiTooltip-tooltip {
+  border-radius: 7px !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
-  background-color: #0009be !important;
+  background: linear-gradient(111.19deg, rgb(170, 255, 236) -63.59%, rgb(255, 78, 205) -20.3%, rgb(0, 112, 243) 70.46%);
 }
 
 .MuiTooltip-arrow {
-  color: #0009be !important;
+  color: rgb(255, 78, 205) !important;
 }
 
 .MuiListItemIcon-root .MuiSvgIcon-root {
   color: white;
 }
-
 
 /* ========================= SKILLS ========================= */
 .section {
@@ -732,4 +680,18 @@ canvas {
   /* -webkit-filter: grayscale(100%) saturate(0);
   filter: grayscale(100%) saturate(0);
   opacity: 1; */
+}
+
+.ml4 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4.5em;
+}
+.ml4 .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0; 
 }

@@ -23,7 +23,7 @@ const Experience = ({ handleChangePage, desktop }) => {
     <>
       <HeadComponent title="Experience" />
       <Box
-        width="100%"
+        width="calc(100% - 65px)"
         height="100vh"
         textAlign="center"
         position="absolute"
@@ -49,10 +49,12 @@ const Experience = ({ handleChangePage, desktop }) => {
                       <Box clone height="100%">
                         <Card
                           style={{
-                            backgroundColor: isPresent
-                              ? fade(colors.blueFernando, 0.5)
-                              : colors.black,
-                            border: `3px solid ${isPresent ? colors.blueFernando : colors.black}`,
+                            background: isPresent
+                              ? `linear-gradient(111.19deg,${fade('#aaffec', 0.7)} -63.59%,${fade(
+                                  '#ff4ecd',
+                                  0.7,
+                                )} -20.3%,${fade('#0070f3', 0.7)} 70.46%)`
+                              : fade(colors.pink, 0.1),
                             borderRadius: 15,
                           }}
                         >

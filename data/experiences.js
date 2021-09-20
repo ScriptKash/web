@@ -1,7 +1,7 @@
 export const experiences = [
   {
     time: "2020 - Present",
-    title: "Frontend Developer @ Gamanza",
+    title: "Software Engineer II @ Gamanza",
     description: `Realization of different UI components and views for information management in a CRM system.`,
     image: "./assets/images/gamanza.png",
   },
